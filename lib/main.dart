@@ -34,7 +34,7 @@ class MyPage extends StatelessWidget {
                   style: TextStyle(color: Colors.white),
                 ),
                 color: Colors.red,
-                onPressed: () {aaaa
+                onPressed: () {
                   Scaffold.of(ctx)
                       .showSnackBar(SnackBar(content: Text('Hello')));
                 },
