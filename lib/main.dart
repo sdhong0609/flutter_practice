@@ -30,7 +30,7 @@ class MyPage extends StatelessWidget {
             return Center(
               child: FlatButton(
                 child: Text(
-                  'Show me',aaaaaa
+                  'Show me',
                   style: TextStyle(color: Colors.white),
                 ),
                 color: Colors.red,
