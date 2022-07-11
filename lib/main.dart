@@ -34,7 +34,7 @@ class Grade extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Center(
-              child: CircleAvatar(aaa
+              child: CircleAvatar(
                 backgroundImage: AssetImage('assets/cat.jpg'),
                 radius: 60.0,
               ),
