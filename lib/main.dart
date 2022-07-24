@@ -1,3 +1,6 @@
+import 'dart:html';
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 
 void main() => runApp(MyApp());
@@ -25,22 +28,16 @@ class MyPage extends StatelessWidget {
           title: Text('Snack Bar'),
           centerTitle: true,
         ),
-        body: Builder(
-          builder: (BuildContext ctx) {
-            return Center(
-              child: FlatButton(
-                child: Text(
-                  'Show me',
-                  style: TextStyle(color: Colors.white),
-                ),
-                color: Colors.red,
-                onPressed: () {
-                  Scaffold.of(ctx)
-                      .showSnackBar(SnackBar(content: Text('Hello')));
-                },
-              ),
-            );
-          },
+        body: Center(
+          child: FlatButton(
+            child: Text('Show me', style: TextStyle(color: Colors.white)),
+            color: Colors.red,
+            onPressed: () {
+              Scaffold.of(context).showSnackBar(SnackBar(
+                content: Text('Hello'),
+              ));
+            },
+          ),
         ));
   }
 }
