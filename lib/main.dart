@@ -11,7 +11,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Snack Bar',
+      title: 'MyApp',
+      theme: ThemeData(primaryColor: Colors.blue),
       home: MyPage(),
     );
   }
@@ -23,29 +24,17 @@ class MyPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Toast message'),
-        centerTitle: true,
-      ),
-      body: Center(
-        child: FlatButton(
-          onPressed: () {
-            flutterToast();
-          },
-          child: Text('Toast'),
-          color: Colors.blue,
+      backgroundColor: Colors.blue,
+      body: SafeArea(
+        child: Container(
+          color: Colors.red,
+          width: 100,
+          height: 100,
+          margin: EdgeInsets.symmetric(vertical: 50, horizontal: 10),
+          padding: EdgeInsets.all(40),
+          child: Text('Hello'),
         ),
       ),
     );
   }
-}
-
-void flutterToast() {
-  Fluttertoast.showToast(
-      msg: 'Flutter',
-      gravity: ToastGravity.BOTTOM,
-      backgroundColor: Colors.redAccent,
-      fontSize: 20.0,
-      textColor: Colors.white,
-      toastLength: Toast.LENGTH_SHORT);
 }
