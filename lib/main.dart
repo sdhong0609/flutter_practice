@@ -1,7 +1,4 @@
-import 'dart:html';
-
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 
 void main() => runApp(MyApp());
 
@@ -24,15 +21,30 @@ class MyPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.blue,
+      backgroundColor: Colors.teal,
       body: SafeArea(
-        child: Container(
-          color: Colors.red,
-          width: 100,
-          height: 100,
-          margin: EdgeInsets.symmetric(vertical: 50, horizontal: 10),
-          padding: EdgeInsets.all(40),
-          child: Text('Hello'),
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            Container(
+              height: 100,
+              color: Colors.white,
+              child: Text('Container 1'),
+            ),
+            SizedBox(
+              width: 30.0,
+            ),
+            Container(
+              height: 100,
+              color: Colors.blue,
+              child: Text('Container 2'),
+            ),
+            Container(
+              height: 100,
+              color: Colors.red,
+              child: Text('Container 3'),
+            ),
+          ],
         ),
       ),
     );
