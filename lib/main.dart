@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
       body: Center(
         child: Column(
           children: [
-            ElevatedButton(onPressed: () {}, child: Text('Add number')),
+            ElevatedButton(onPressed: () {}, child: Text('Add number'))
           ],
         ),
       ),
