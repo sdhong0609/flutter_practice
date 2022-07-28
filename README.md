@@ -1,6 +1,6 @@
 # flutter_practice
 
-A new Flutter project.
+플러터 연습을 위한 프로젝트입니다. 일종의 연습장 같은 repository입니다. 유튜브 코딩셰프 채널을 보면서 공부하였습니다.
 
 ## Getting Started
 
