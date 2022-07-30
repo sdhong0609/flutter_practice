@@ -115,7 +115,7 @@ class MyButtons extends StatelessWidget {
               buttonPadding: EdgeInsets.all(20),
               children: [
                 TextButton(onPressed: () {}, child: Text("TextButton")),
-                // ElevatedButton(onPressed: () {}, child: Text("ElevatedButton"))
+                ElevatedButton(onPressed: () {}, child: Text("ElevatedButton"))
               ],
             )
           ],
