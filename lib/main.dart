@@ -1,5 +1,3 @@
-import 'dart:html';
-
 import 'package:flutter/material.dart';
 
 void main() {
@@ -13,105 +11,115 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData(primarySwatch: Colors.blue),
-      home: MyPage(),
+      home: MyButtons(),
     );
   }
 }
 
-class MyPage extends StatelessWidget {
-  const MyPage({Key? key}) : super(key: key);
+class MyButtons extends StatelessWidget {
+  const MyButtons({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Scaffold Messenger'),
-      ),
-      body: HomeBody(),
-      floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.thumb_up),
-        onPressed: () {
-          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-            content: Text('Like a new Snack bar!'),
-            duration: Duration(seconds: 5),
-            action: SnackBarAction(
-                label: 'Undo',
-                onPressed: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => ThirdPage()));
-                }),
-          ));
-        },
-      ),
-    );
-  }
-}
-
-class HomeBody extends StatelessWidget {
-  const HomeBody({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Center(
-      child: ElevatedButton(
-        child: Text('Go to the second page'),
-        onPressed: () {
-          Navigator.push(
-              context, MaterialPageRoute(builder: (context) => SecondPage()));
-        },
-      ),
-    );
-  }
-}
-
-class SecondPage extends StatelessWidget {
-  const SecondPage({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Second Page'),
+        title: Text('Buttons'),
+        centerTitle: true,
       ),
       body: Center(
-        child: Text(
-          '좋아요가 추가 되었습니다',
-          style: TextStyle(fontSize: 20.0, color: Colors.redAccent),
-        ),
-      ),
-    );
-  }
-}
-
-class ThirdPage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return ScaffoldMessenger(
-      child: Scaffold(
-        appBar: AppBar(
-          title: Text('Third Page'),
-        ),
-        body: Builder(builder: (context) {
-          return Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  '좋아요를 취소하시겠습니까?',
-                  style: TextStyle(fontSize: 20.0, color: Colors.redAccent),
-                ),
-                ElevatedButton(
-                    onPressed: () {
-                      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                        content: Text('좋아요가 취소되었습니다'),
-                        duration: Duration(seconds: 3),
-                      ));
-                    },
-                    child: Text('취소하기'))
-              ],
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            TextButton(
+              onPressed: () {},
+              onLongPress: () {
+                print('text button');
+              },
+              child: Text('Text button', style: TextStyle(fontSize: 20.0)),
+              style: TextButton.styleFrom(
+                primary: Colors.red,
+                // backgroundColor: Colors.blue
+              ),
             ),
-          );
-        }),
+            ElevatedButton(
+              onPressed: () {
+                print('Elevated button');
+              },
+              child: Text('Elevated button'),
+              style: ElevatedButton.styleFrom(
+                  primary: Colors.orangeAccent,
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10.0)),
+                  elevation: 0.0),
+            ),
+            OutlinedButton(
+              onPressed: () {
+                print('Outlined button');
+              },
+              child: Text('Outlined button'),
+              style: OutlinedButton.styleFrom(
+                primary: Colors.green,
+                // side: BorderSide(
+                //   color: Colors.black87,
+                //   width: 2.0
+                // )
+              ),
+            ),
+            TextButton.icon(
+              onPressed: () {
+                print('Icon button');
+              },
+              icon: Icon(
+                Icons.home,
+                size: 30.0,
+                // color: Colors.black87,
+              ),
+              label: Text('Go to home'),
+              style: TextButton.styleFrom(primary: Colors.purple),
+            ),
+            ElevatedButton.icon(
+              onPressed: () {
+                print('Elevated Icon button');
+              },
+              icon: Icon(
+                Icons.home,
+                size: 20,
+              ),
+              label: Text('Go to home'),
+              style: ElevatedButton.styleFrom(
+                  primary: Colors.black, minimumSize: Size(200, 50)),
+            ),
+            OutlinedButton.icon(
+              onPressed: () {
+                print('Outlined Icon button');
+              },
+              icon: Icon(Icons.home),
+              label: Text('Go to home'),
+              style: OutlinedButton.styleFrom(primary: Colors.black),
+            ),
+            ElevatedButton.icon(
+              onPressed: null,
+              icon: Icon(
+                Icons.home,
+                size: 20,
+              ),
+              label: Text('Go to Home'),
+              style: ElevatedButton.styleFrom(
+                primary: Colors.black,
+                onSurface: Colors.pink,
+                // minimumSize: Size(200, 50)
+              ),
+            ),
+            ButtonBar(
+              alignment: MainAxisAlignment.center,
+              buttonPadding: EdgeInsets.all(20),
+              children: [
+                TextButton(onPressed: () {}, child: Text("TextButton")),
+                ElevatedButton(onPressed: () {}, child: Text("ElevatedButton"))
+              ],
+            )
+          ],
+        ),
       ),
     );
   }
