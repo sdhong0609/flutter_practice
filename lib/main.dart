@@ -28,17 +28,32 @@ class MyAppState extends State<MyApp> {
                 '$counter',
                 style: Theme.of(context).textTheme.displaySmall,
               ),
+              SizedBox(height: 20,),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  FloatingActionButton(
+                      child: Icon(Icons.add),
+                      onPressed: () {
+                        setState(() {
+                          counter++;
+                          print("$counter");
+                        });
+                      }),
+                  SizedBox(width: 20,),
+                  FloatingActionButton(
+                      child: Icon(Icons.remove),
+                      onPressed: () {
+                        setState(() {
+                          counter--;
+                          print("$counter");
+                        });
+                      }),
+                ],
+              )
             ],
           ),
         ),
-        floatingActionButton: FloatingActionButton(
-            child: Icon(Icons.add),
-            onPressed: () {
-              setState(() {
-                counter++;
-                print("$counter");
-              });
-            }),
       ),
     );
   }
