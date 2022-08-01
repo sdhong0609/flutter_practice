@@ -1,10 +1,16 @@
 import 'package:flutter/material.dart';
 
-void main() {
-  runApp(MyApp());
+void main() => runApp(MyApp());
+
+class MyApp extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() {
+    // TODO: implement createState
+    return MyAppState();
+  }
 }
 
-class MyApp extends StatelessWidget {
+class MyAppState extends State<MyApp> {
   int counter = 0;
 
   @override
@@ -21,15 +27,17 @@ class MyApp extends StatelessWidget {
               Text(
                 '$counter',
                 style: Theme.of(context).textTheme.displaySmall,
-              )
+              ),
             ],
           ),
         ),
         floatingActionButton: FloatingActionButton(
             child: Icon(Icons.add),
             onPressed: () {
-              counter++;
-              print("$counter");
+              setState(() {
+                counter++;
+                print("$counter");
+              });
             }),
       ),
     );
