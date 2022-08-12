@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_practice/model/model.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
@@ -14,8 +15,11 @@ class WeatherScreen extends StatefulWidget {
 }
 
 class _WeatherScreenState extends State<WeatherScreen> {
+  Model model = Model();
   String cityName = "";
   int temp = 0;
+  Widget icon = Container();
+  String des = "";
   var date = DateTime.now();
 
   @override
@@ -27,8 +31,11 @@ class _WeatherScreenState extends State<WeatherScreen> {
 
   void updateData(dynamic weatherData) {
     double temp2 = weatherData['main']['temp'];
+    int condition = weatherData['weather'][0]['id'];
+    des = weatherData['weather'][0]['description'];
     temp = temp2.round();
     cityName = weatherData['name'];
+    icon = model.getWeatherIcon(condition);
 
     print(temp);
     print(cityName);
@@ -86,7 +93,7 @@ class _WeatherScreenState extends State<WeatherScreen> {
                               height: 150.0,
                             ),
                             Text(
-                              'Seoul',
+                              '$cityName',
                               style: GoogleFonts.lato(
                                   fontSize: 35.0,
                                   fontWeight: FontWeight.bold,
@@ -123,7 +130,7 @@ class _WeatherScreenState extends State<WeatherScreen> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              '18\u2103',
+                              '$temp\u2103',
                               style: GoogleFonts.lato(
                                   fontSize: 85.0,
                                   fontWeight: FontWeight.w300,
@@ -131,12 +138,12 @@ class _WeatherScreenState extends State<WeatherScreen> {
                             ),
                             Row(
                               children: [
-                                SvgPicture.asset('svg/climacon-sun.svg'),
+                                icon,
                                 SizedBox(
                                   width: 10.0,
                                 ),
                                 Text(
-                                  'clear sky',
+                                  des,
                                   style: GoogleFonts.lato(
                                       fontSize: 16.0, color: Colors.white),
                                 )
