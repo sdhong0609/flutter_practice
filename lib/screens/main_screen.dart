@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_practice/config/palette.dart';
@@ -447,6 +448,12 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
                               password: userPassword,
                             );
 
+                            await FirebaseFirestore.instance
+                                .collection('user')
+                                .doc(newUser.user!.uid)
+                                .set(
+                                    {'userName': userName, 'email': userEmail});
+
                             if (newUser.user != null) {
                               Navigator.push(
                                 context,
@@ -478,12 +485,12 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
                             );
 
                             if (newUser.user != null) {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(builder: (context) {
-                                  return ChatScreen();
-                                }),
-                              );
+                              // Navigator.push(
+                              //   context,
+                              //   MaterialPageRoute(builder: (context) {
+                              //     return ChatScreen();
+                              //   }),
+                              // );
                               setState(() {
                                 showSpinner = false;
                               });
